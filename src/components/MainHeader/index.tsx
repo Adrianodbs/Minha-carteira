@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 
 import emojis from '../../utils/emojis'
+import Toggle from '../Toggle'
 
 import * as C from './styles'
 
@@ -11,7 +12,7 @@ function MainHeader() {
   }, [])
   return (
     <C.Container>
-      <h1>Toggle</h1>
+      <Toggle />
 
       <C.Profile>
         <C.Welcome>Olá, {emoji}</C.Welcome>
