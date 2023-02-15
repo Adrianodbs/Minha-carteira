@@ -1,12 +1,13 @@
 import React from 'react'
-import Dashboard from './pages/Dashboard'
+import Layout from './components/Layout'
+
 import { Global } from './styles/GlobalStyles'
 
 function App() {
   return (
     <>
       <Global />
-      <Dashboard />
+      <Layout />
     </>
   )
 }
