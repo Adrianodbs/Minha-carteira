@@ -7,13 +7,14 @@ import { Global } from './styles/GlobalStyles'
 import { dark } from './styles/themes/dark'
 import { light } from './styles/themes/light'
 import Dashboard from './pages/Dashboard'
+import List from './pages/List'
 
 function App() {
   return (
     <ThemeProvider theme={dark}>
       <Global />
       <Layout>
-        <Dashboard />
+        <List />
       </Layout>
     </ThemeProvider>
   )

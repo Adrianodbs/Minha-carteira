@@ -1,15 +1,19 @@
+import SelectInput from '../SelectInput'
 import * as C from './styles'
 
-function ContentHeader() {
+interface iContentHeaderProps {
+  title: string
+  lineColor: string
+  children: React.ReactNode
+}
+
+function ContentHeader({ title, lineColor, children }: iContentHeaderProps) {
   return (
     <C.Container>
-      <C.TitleContainer>
-        <h1>Titulo</h1>
+      <C.TitleContainer lineColor={lineColor}>
+        <h1>{title}</h1>
       </C.TitleContainer>
-      <C.Controllers>
-        <button>Botão a</button>
-        <button>Botão b</button>
-      </C.Controllers>
+      <C.Controllers>{children}</C.Controllers>
     </C.Container>
   )
 }
