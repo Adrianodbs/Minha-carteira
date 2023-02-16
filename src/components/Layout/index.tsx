@@ -2,14 +2,14 @@ import { Grid } from './styles'
 
 import MainHeader from '../MainHeader'
 import Aside from '../Aside'
-import Content from '../Content'
+import Content, { ChildrenProps } from '../Content'
 
-function Layout() {
+function Layout({ children }: ChildrenProps) {
   return (
     <Grid>
       <MainHeader />
       <Aside />
-      <Content />
+      <Content>{children}</Content>
     </Grid>
   )
 }

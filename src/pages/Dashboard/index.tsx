@@ -1,7 +1,12 @@
-import React from 'react'
+import ContentHeader from '../../components/ContentHeader'
+import * as C from './styles'
 
 function Dashboard() {
-  return <div>Dashboard</div>
+  return (
+    <C.Container>
+      <ContentHeader />
+    </C.Container>
+  )
 }
 
 export default Dashboard

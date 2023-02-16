@@ -1,11 +1,11 @@
 import { Container } from './styles'
 
-function Content() {
-  return (
-    <Container>
-      <h1>Content</h1>
-    </Container>
-  )
+export interface ChildrenProps {
+  children: React.ReactNode
+}
+
+function Content({ children }: ChildrenProps) {
+  return <Container>{children}</Container>
 }
 
 export default Content
