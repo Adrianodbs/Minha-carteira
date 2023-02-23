@@ -9,6 +9,8 @@ import {
   MdExitToApp
 } from 'react-icons/md'
 
+import { Link } from 'react-router-dom'
+
 function Aside() {
   return (
     <C.Container>
@@ -18,15 +20,16 @@ function Aside() {
       </C.Header>
 
       <C.MenuContainer>
-        <C.MenuItemLink href="#">
+        <C.MenuItemLink href="/dashboard">
           <MdDashboard />
           Dashboard
         </C.MenuItemLink>
-        <C.MenuItemLink href="#">
+
+        <C.MenuItemLink href="/list/entry-balance">
           <MdArrowUpward />
           Entradas
         </C.MenuItemLink>
-        <C.MenuItemLink href="#">
+        <C.MenuItemLink href="/list/exit-balance">
           <MdArrowDownward />
           Saídas
         </C.MenuItemLink>

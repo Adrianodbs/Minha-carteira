@@ -8,14 +8,13 @@ import { dark } from './styles/themes/dark'
 import { light } from './styles/themes/light'
 import Dashboard from './pages/Dashboard'
 import List from './pages/List'
+import Routes from './routes'
 
 function App() {
   return (
     <ThemeProvider theme={dark}>
       <Global />
-      <Layout>
-        <List />
-      </Layout>
+      <Routes />
     </ThemeProvider>
   )
 }
