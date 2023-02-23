@@ -1,7 +1,6 @@
 import * as C from './styles'
 
 interface iHistoryFinanceCardProps {
-  cardColor: string
   tagColor: string
   title: string
   subtitle: string
@@ -9,14 +8,13 @@ interface iHistoryFinanceCardProps {
 }
 
 function HistoryFinanceCard({
-  cardColor,
   tagColor,
   title,
   subtitle,
   amount
 }: iHistoryFinanceCardProps) {
   return (
-    <C.Container color={cardColor}>
+    <C.Container>
       <C.Tag color={tagColor} />
       <div>
         <span>{title}</span>
