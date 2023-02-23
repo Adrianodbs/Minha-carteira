@@ -44,6 +44,55 @@ function List() {
           subtitle="22/02/2023"
           amount="R$ 130"
         />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="22/02/2023"
+          amount="R$ 130"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="22/02/2023"
+          amount="R$ 130"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="22/02/2023"
+          amount="R$ 130"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="22/02/2023"
+          amount="R$ 130"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="22/02/2023"
+          amount="R$ 130"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="22/02/2023"
+          amount="R$ 130"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="22/02/2023"
+          amount="R$ 130"
+        />
       </C.Content>
     </C.Container>
   )
