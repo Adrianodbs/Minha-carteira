@@ -1,14 +1,16 @@
+import { useState } from 'react'
 import { Container, ToggleLabel, ToggleSelector } from './styles'
 
 function Toggle() {
+  const [online, setOnline] = useState(false)
   return (
     <Container>
       <ToggleLabel>Light</ToggleLabel>
       <ToggleSelector
-        checked
+        checked={online}
         uncheckedIcon={false}
         checkedIcon={false}
-        onChange={() => console.log('mudou')}
+        onChange={() => setOnline(!online)}
       />
       <ToggleLabel>Dark</ToggleLabel>
     </Container>
