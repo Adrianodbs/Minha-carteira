@@ -5,6 +5,8 @@ import * as C from './styles'
 
 import gains from '../../repositories/gains'
 import expenses from '../../repositories/expenses'
+import formatCurrency from '../../utils/formatCurrency'
+import formatDate from '../../utils/formatDate'
 
 import { useMemo, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
@@ -61,9 +63,9 @@ function List() {
       return {
         id: String(Math.random() * data.length),
         description: item.description,
-        amountFormatted: item.amount,
+        amountFormatted: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
-        dateFormatted: item.date,
+        dateFormatted: formatDate(item.date),
         tagColor: item.frequency === 'recorrente' ? '#4e41f0' : '#e44c4e'
       }
     })
