@@ -11,7 +11,7 @@ function Dashboard() {
   return (
     <C.Container>
       <ContentHeader title="Dashboard" lineColor="#f7931b">
-        <SelectInput options={options} />
+        <SelectInput options={options} onChange={() => {}} />
       </ContentHeader>
     </C.Container>
   )

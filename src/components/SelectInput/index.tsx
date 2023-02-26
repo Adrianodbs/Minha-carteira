@@ -5,12 +5,14 @@ interface iSelectInputProps {
     value: string | number
     label: string | number
   }[]
+  onChange(event: React.ChangeEvent<HTMLSelectElement>): void | undefined
+  defaltValue?: string | number
 }
 
-function SelectInput({ options }: iSelectInputProps) {
+function SelectInput({ options, onChange, defaltValue }: iSelectInputProps) {
   return (
     <C.Container>
-      <select>
+      <select onChange={onChange} defaultValue={defaltValue}>
         {options.map(option => (
           <option key={option.value} value={option.value}>
             {option.label}
