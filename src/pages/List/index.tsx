@@ -31,11 +31,11 @@ function List() {
     'eventual'
   ])
 
-  const [monthSelected, setMonthSelected] = useState<string>(
-    String(new Date().getMonth() + 1)
+  const [monthSelected, setMonthSelected] = useState<number>(
+    new Date().getMonth() + 1
   )
-  const [yearSelected, setYearSelected] = useState<string>(
-    String(new Date().getFullYear())
+  const [yearSelected, setYearSelected] = useState<number>(
+    new Date().getFullYear()
   )
 
   const { type } = useParams()
@@ -84,8 +84,8 @@ function List() {
   useEffect(() => {
     const filteredData = listData.filter(item => {
       const date = new Date(item.date)
-      const month = String(date.getMonth() + 1)
-      const year = String(date.getFullYear())
+      const month = date.getMonth() + 1
+      const year = date.getFullYear()
 
       return (
         month === monthSelected &&
@@ -121,17 +121,35 @@ function List() {
     }
   }
 
+  const handleMonthSelected = (month: string) => {
+    try {
+      const parseMonth = Number(month)
+      setMonthSelected(parseMonth)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleYearSelected = (year: string) => {
+    try {
+      const parseYear = Number(year)
+      setYearSelected(parseYear)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <C.Container>
       <ContentHeader title={title} lineColor={lineColor}>
         <SelectInput
           options={months}
-          onChange={e => setMonthSelected(e.target.value)}
+          onChange={e => handleMonthSelected(e.target.value)}
           defaltValue={monthSelected}
         />
         <SelectInput
           options={years}
-          onChange={e => setYearSelected(e.target.value)}
+          onChange={e => handleYearSelected(e.target.value)}
           defaltValue={yearSelected}
         />
       </ContentHeader>
