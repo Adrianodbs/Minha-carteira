@@ -45,7 +45,7 @@ function List() {
   }, [type])
 
   const lineColor = useMemo(() => {
-    return type === 'entry-balance' ? '#f7931b' : '#e44c4e'
+    return type === 'entry-balance' ? '#4e41f0' : '#e44c4e'
   }, [type])
 
   const listData = useMemo(() => {
