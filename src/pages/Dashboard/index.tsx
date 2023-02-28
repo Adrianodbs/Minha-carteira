@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 
 import ContentHeader from '../../components/ContentHeader'
 import SelectInput from '../../components/SelectInput'
+import WalletBox from '../../components/WalletBox'
 
 import * as C from './styles'
 
@@ -78,6 +79,29 @@ function Dashboard() {
           defaltValue={yearSelected}
         />
       </ContentHeader>
+      <C.Content>
+        <WalletBox
+          title="Saldo"
+          amount={150}
+          footerLabel="Atualizado com base nas entradas e saídas"
+          icon="dolar"
+          color="#4241f0"
+        />
+        <WalletBox
+          title="Entradas"
+          amount={5000}
+          footerLabel="Atualizado com base nas entradas"
+          icon="arrowUp"
+          color="#f7931b"
+        />
+        <WalletBox
+          title="Saídas"
+          amount={4850}
+          footerLabel="Atualizado com base nas saídas"
+          icon="arrowDown"
+          color="#e44c4e"
+        />
+      </C.Content>
     </C.Container>
   )
 }
