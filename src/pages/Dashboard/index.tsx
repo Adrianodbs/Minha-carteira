@@ -9,6 +9,7 @@ import * as C from './styles'
 
 import happyImg from '../../assets/happy.svg'
 import sadImg from '../../assets/sad.svg'
+import grinningImg from '../../assets/grinning.svg'
 
 import expenses from '../../repositories/expenses'
 import gains from '../../repositories/gains'
@@ -18,9 +19,80 @@ function Dashboard() {
   const [monthSelected, setMonthSelected] = useState<number>(
     new Date().getMonth() + 1
   )
+
   const [yearSelected, setYearSelected] = useState<number>(
     new Date().getFullYear()
   )
+
+  const totalExpenses = useMemo(() => {
+    let total: number = 0
+
+    expenses.forEach(item => {
+      const date = new Date(item.date)
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount)
+        } catch {
+          throw new Error('Invalid amount! Amount must be number.')
+        }
+      }
+    })
+
+    return total
+  }, [monthSelected, yearSelected])
+
+  const totalGains = useMemo(() => {
+    let total: number = 0
+
+    gains.forEach(item => {
+      const date = new Date(item.date)
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount)
+        } catch {
+          throw new Error('Invalid amount! Amount must be number.')
+        }
+      }
+    })
+
+    return total
+  }, [monthSelected, yearSelected])
+
+  const totalBalance = useMemo(() => {
+    return totalGains - totalExpenses
+  }, [totalExpenses, totalGains])
+
+  const message = useMemo(() => {
+    if (totalBalance < 0) {
+      return {
+        title: 'Que triste',
+        description: 'Neste mês você gastou mais do que deveria!',
+        footerText:
+          'Verifique os seus gastos e tente cortar algumas coisa desnecessárias.',
+        icon: sadImg
+      }
+    } else if (totalBalance === 0) {
+      return {
+        title: 'Ufaa!',
+        description: 'Neste mês você gastou exatamente o que ganhou.',
+        footerText: 'Tenha cuidado, no próximo mês tente poupar dinheiro.',
+        icon: grinningImg
+      }
+    } else {
+      return {
+        title: 'Muito bem !',
+        description: 'Sua carteira está positiva!',
+        footerText: 'Continue assim. Considere investir o seu dinheiro.',
+        icon: happyImg
+      }
+    }
+  }, [totalBalance])
 
   const years = useMemo(() => {
     let uniqueYears: number[] = []
@@ -86,30 +158,30 @@ function Dashboard() {
       <C.Content>
         <WalletBox
           title="Saldo"
-          amount={150}
+          amount={totalBalance}
           footerLabel="Atualizado com base nas entradas e saídas"
           icon="dolar"
           color="#4241f0"
         />
         <WalletBox
           title="Entradas"
-          amount={5000}
+          amount={totalGains}
           footerLabel="Atualizado com base nas entradas"
           icon="arrowUp"
           color="#f7931b"
         />
         <WalletBox
           title="Saídas"
-          amount={4850}
+          amount={totalExpenses}
           footerLabel="Atualizado com base nas saídas"
           icon="arrowDown"
           color="#e44c4e"
         />
         <MessageBox
-          title="Muito bem!"
-          description="Sua carteira está positiva!"
-          footerText="Continue assim. Considere investir o seu dinheiro."
-          icon={happyImg}
+          title={message.title}
+          description={message.description}
+          footerText={message.footerText}
+          icon={message.icon}
         />
       </C.Content>
     </C.Container>
