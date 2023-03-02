@@ -24,7 +24,11 @@ export const SideLeft = styled.aside `
   }
 `
 
-export const SideRight = styled.main ``
+export const SideRight = styled.main `
+  display: flex;
+  flex: 1;
+  justify-content: center;
+`
 
 export const LegendContainer = styled.ul `
   list-style: none;

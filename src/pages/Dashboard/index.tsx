@@ -14,7 +14,7 @@ import grinningImg from '../../assets/grinning.svg'
 import expenses from '../../repositories/expenses'
 import gains from '../../repositories/gains'
 import listOfMonths from '../../utils/months'
-import PieChart from '../../components/PieChart'
+import PieChartBox from '../../components/PieChart'
 
 function Dashboard() {
   const [monthSelected, setMonthSelected] = useState<number>(
@@ -94,6 +94,30 @@ function Dashboard() {
       }
     }
   }, [totalBalance])
+
+  const relationExpensesVersusGains = useMemo(() => {
+    const total = totalGains + totalExpenses
+
+    const percentGains = (totalGains / total) * 100
+    const percentExpenses = (totalExpenses / total) * 100
+
+    const data = [
+      {
+        name: 'Entradas',
+        value: totalExpenses,
+        percent: Number(percentGains.toFixed(1)),
+        color: '#e44c4e'
+      },
+      {
+        name: 'Saídas',
+        value: totalExpenses,
+        percent: Number(percentExpenses.toFixed(1)),
+        color: '#f7931b'
+      }
+    ]
+
+    return data
+  }, [totalGains, totalExpenses])
 
   const years = useMemo(() => {
     let uniqueYears: number[] = []
@@ -184,7 +208,7 @@ function Dashboard() {
           footerText={message.footerText}
           icon={message.icon}
         />
-        <PieChart />
+        <PieChartBox data={relationExpensesVersusGains} />
       </C.Content>
     </C.Container>
   )

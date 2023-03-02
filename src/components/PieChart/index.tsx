@@ -1,35 +1,42 @@
 import * as C from './styles'
-// import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts'
+import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts'
 
-function PieChart() {
+interface IPieChartProps {
+  data: {
+    name: string
+    value: number
+    percent: number
+    color: string
+  }[]
+}
+
+function PieChartBox({ data }: IPieChartProps) {
   return (
     <C.Container>
       <C.SideLeft>
         <h2>Relação</h2>
         <C.LegendContainer>
-          <C.Legend color="#f7931b">
-            <div>5%</div>
-            <span>Entradas</span>
-          </C.Legend>
-          <C.Legend color="#e44c4e">
-            <div>95%</div>
-            <span>Saídas</span>
-          </C.Legend>
+          {data.map(indicator => (
+            <C.Legend key={indicator.name} color={indicator.color}>
+              <div>{indicator.percent}</div>
+              <span>{indicator.name}</span>
+            </C.Legend>
+          ))}
         </C.LegendContainer>
       </C.SideLeft>
-      {/* <C.SideRight>
+      <C.SideRight>
         <ResponsiveContainer>
           <PieChart>
-            <Pie
-              data={[{ amount: 30, percent: 95 }]}
-              labelLine={false}
-              dataKey="percent"
-            ></Pie>
+            <Pie data={data} dataKey="percent">
+              {data.map(indicator => (
+                <Cell key={indicator.name} fill={indicator.color} />
+              ))}
+            </Pie>
           </PieChart>
         </ResponsiveContainer>
-      </C.SideRight> */}
+      </C.SideRight>
     </C.Container>
   )
 }
 
-export default PieChart
+export default PieChartBox
