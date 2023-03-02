@@ -14,6 +14,7 @@ import grinningImg from '../../assets/grinning.svg'
 import expenses from '../../repositories/expenses'
 import gains from '../../repositories/gains'
 import listOfMonths from '../../utils/months'
+import PieChart from '../../components/PieChart'
 
 function Dashboard() {
   const [monthSelected, setMonthSelected] = useState<number>(
@@ -183,6 +184,7 @@ function Dashboard() {
           footerText={message.footerText}
           icon={message.icon}
         />
+        <PieChart />
       </C.Content>
     </C.Container>
   )
