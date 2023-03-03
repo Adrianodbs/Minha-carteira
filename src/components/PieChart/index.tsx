@@ -18,7 +18,7 @@ function PieChartBox({ data }: IPieChartProps) {
         <C.LegendContainer>
           {data.map(indicator => (
             <C.Legend key={indicator.name} color={indicator.color}>
-              <div>{indicator.percent}</div>
+              <div>{indicator.percent}%</div>
               <span>{indicator.name}</span>
             </C.Legend>
           ))}

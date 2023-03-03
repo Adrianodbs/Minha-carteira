@@ -15,6 +15,7 @@ import expenses from '../../repositories/expenses'
 import gains from '../../repositories/gains'
 import listOfMonths from '../../utils/months'
 import PieChartBox from '../../components/PieChart'
+import HistoryBox from '../../components/HistoryBox'
 
 function Dashboard() {
   const [monthSelected, setMonthSelected] = useState<number>(
@@ -119,6 +120,57 @@ function Dashboard() {
     return data
   }, [totalGains, totalExpenses])
 
+  const historyData = useMemo(() => {
+    return listOfMonths
+      .map((_, month) => {
+        let amountEntry = 0
+        gains.forEach(gain => {
+          const date = new Date(gain.date)
+          const gainMonth = date.getMonth()
+          const gainYear = date.getFullYear()
+
+          if (gainMonth === month && gainYear === yearSelected) {
+            try {
+              amountEntry += Number(gain.amount)
+            } catch (error) {
+              console.log(error)
+            }
+          }
+        })
+
+        let amountOutput = 0
+        expenses.forEach(expense => {
+          const date = new Date(expense.date)
+          const expenseMonth = date.getMonth()
+          const expenseYear = date.getFullYear()
+
+          if (expenseMonth === month && expenseYear === yearSelected) {
+            try {
+              amountOutput += Number(expense.amount)
+            } catch (error) {
+              console.log(error)
+            }
+          }
+        })
+
+        return {
+          monthNumber: month,
+          month: listOfMonths[month].substr(0, 3),
+          amountEntry,
+          amountOutput
+        }
+      })
+      .filter(item => {
+        const currentMonth = new Date().getMonth()
+        const currentYear = new Date().getFullYear()
+
+        return (
+          (yearSelected === currentYear && item.monthNumber <= currentMonth) ||
+          yearSelected < currentYear
+        )
+      })
+  }, [yearSelected])
+
   const years = useMemo(() => {
     let uniqueYears: number[] = []
 
@@ -209,6 +261,11 @@ function Dashboard() {
           icon={message.icon}
         />
         <PieChartBox data={relationExpensesVersusGains} />
+        <HistoryBox
+          data={historyData}
+          lineColorAmountEntry="#f7931b"
+          lineColorAmountOutput="#e44c4e"
+        />
       </C.Content>
     </C.Container>
   )
