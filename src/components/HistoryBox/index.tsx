@@ -1,5 +1,7 @@
 import * as C from './styles'
 
+import formatCurrency from '../../utils/formatCurrency'
+
 import {
   ResponsiveContainer,
   LineChart,
@@ -26,7 +28,7 @@ function HistoryBox({
 }: IHistoryBoxProp) {
   return (
     <C.Container>
-      <C.ChartHeader>
+      <C.Header>
         <h2>Histórico de saldo</h2>
         <C.LegendContainer>
           <C.Legend color={lineColorAmountOutput}>
@@ -38,7 +40,7 @@ function HistoryBox({
             <span>Entradas</span>
           </C.Legend>
         </C.LegendContainer>
-      </C.ChartHeader>
+      </C.Header>
 
       <C.ChartContainer>
         <ResponsiveContainer>
@@ -48,7 +50,7 @@ function HistoryBox({
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#cecece" />
             <XAxis dataKey="month" stroke="#cecece" />
-            <Tooltip />
+            <Tooltip formatter={value => formatCurrency(Number(value))} />
             <Line
               type="monotone"
               dataKey="amountEntry"
