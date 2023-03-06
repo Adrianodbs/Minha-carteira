@@ -30,11 +30,15 @@ function BarChartBox({ data, title }: IBarChartProps) {
       <C.SideRight>
         <ResponsiveContainer>
           <BarChart data={data}>
-            <Bar dataKey="amount">
+            <Bar dataKey="amount" name="Valor">
               {data.map(indicator => (
                 <Cell key={indicator.name} fill={indicator.color} />
               ))}
             </Bar>
+            <Tooltip
+              formatter={value => formatCurrency(Number(value))}
+              cursor={{ fill: 'none' }}
+            />
           </BarChart>
         </ResponsiveContainer>
       </C.SideRight>
