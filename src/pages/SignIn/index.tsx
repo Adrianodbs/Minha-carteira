@@ -1,6 +1,7 @@
 import * as C from './styles'
 import logoImg from '../../assets/logo.svg'
 import Input from '../../components/Input'
+import Button from '../../components/Button'
 
 function SignIn() {
   return (
@@ -15,7 +16,7 @@ function SignIn() {
         <Input required type="email" placeholder="E-mail" />
         <Input required type="password" placeholder="Senha" />
 
-        <button type="submit">Acessar</button>
+        <Button type="submit">Acessar</Button>
       </C.Form>
     </C.Container>
   )
