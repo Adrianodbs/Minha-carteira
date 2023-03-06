@@ -1,7 +1,8 @@
-import React from 'react'
+import { useContext } from 'react'
 import Layout from './components/Layout'
 
 import { ThemeProvider } from 'styled-components'
+import { ThemeContext } from './hooks/theme'
 
 import { Global } from './styles/GlobalStyles'
 import { dark } from './styles/themes/dark'
@@ -11,8 +12,9 @@ import List from './pages/List'
 import Routes from './routes'
 
 function App() {
+  const { theme } = useContext(ThemeContext)
   return (
-    <ThemeProvider theme={dark}>
+    <ThemeProvider theme={theme}>
       <Global />
       <Routes />
     </ThemeProvider>
