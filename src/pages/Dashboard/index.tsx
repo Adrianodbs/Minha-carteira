@@ -80,6 +80,14 @@ function Dashboard() {
           'Verifique os seus gastos e tente cortar algumas coisa desnecessárias.',
         icon: sadImg
       }
+    } else if (totalGains === 0 && totalExpenses === 0) {
+      return {
+        title: 'Oops',
+        description: 'Neste mês não há registros de entradas e saídas!',
+        footerText:
+          'Parece que você não fez nenhum registro no mês e ano selecionado.',
+        icon: grinningImg
+      }
     } else if (totalBalance === 0) {
       return {
         title: 'Ufaa!',
@@ -95,25 +103,25 @@ function Dashboard() {
         icon: happyImg
       }
     }
-  }, [totalBalance])
+  }, [totalBalance, totalExpenses, totalGains])
 
   const relationExpensesVersusGains = useMemo(() => {
     const total = totalGains + totalExpenses
 
-    const percentGains = (totalGains / total) * 100
-    const percentExpenses = (totalExpenses / total) * 100
+    const percentGains = Number(((totalGains / total) * 100).toFixed(1))
+    const percentExpenses = Number(((totalExpenses / total) * 100).toFixed(1))
 
     const data = [
       {
         name: 'Entradas',
-        value: totalExpenses,
-        percent: Number(percentGains.toFixed(1)),
+        value: totalGains,
+        percent: percentGains ? percentGains : 0,
         color: '#e44c4e'
       },
       {
         name: 'Saídas',
         value: totalExpenses,
-        percent: Number(percentExpenses.toFixed(1)),
+        percent: percentExpenses ? percentExpenses : 0,
         color: '#f7931b'
       }
     ]
@@ -196,17 +204,22 @@ function Dashboard() {
 
     const total = amountRecurrent + amountEventual
 
+    const percentRecurrent = Number(
+      ((amountRecurrent / total) * 100).toFixed(1)
+    )
+    const percentEventual = Number(((amountEventual / total) * 100).toFixed(1))
+
     return [
       {
         name: 'Recorrentes',
         amount: amountRecurrent,
-        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+        percent: percentRecurrent ? percentRecurrent : 0,
         color: '#f7931b'
       },
       {
         name: 'Eventuais',
         amount: amountEventual,
-        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: '#e44c4e'
       }
     ]
@@ -236,17 +249,22 @@ function Dashboard() {
 
     const total = amountRecurrent + amountEventual
 
+    const percentRecurrent = Number(
+      ((amountRecurrent / total) * 100).toFixed(1)
+    )
+    const percentEventual = Number(((amountEventual / total) * 100).toFixed(1))
+
     return [
       {
         name: 'Recorrentes',
         amount: amountRecurrent,
-        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+        percent: percentRecurrent ? percentRecurrent : 0,
         color: '#f7931b'
       },
       {
         name: 'Eventuais',
         amount: amountEventual,
-        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: '#e44c4e'
       }
     ]
