@@ -1,5 +1,6 @@
 import * as C from './styles'
 import logoImg from '../../assets/logo.svg'
+import Input from '../../components/Input'
 
 function SignIn() {
   return (
@@ -8,11 +9,11 @@ function SignIn() {
         <img src={logoImg} alt="Minha carteira" />
         <h2>Minha carteira</h2>
       </C.Logo>
-      <C.Form>
+      <C.Form onSubmit={() => {}}>
         <C.FormTitle>Entrar</C.FormTitle>
 
-        <input type="text" />
-        <input type="text" />
+        <Input required type="email" placeholder="E-mail" />
+        <Input required type="password" placeholder="Senha" />
 
         <button type="submit">Acessar</button>
       </C.Form>
