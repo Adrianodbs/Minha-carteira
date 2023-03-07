@@ -9,9 +9,11 @@ import {
   MdExitToApp
 } from 'react-icons/md'
 
-import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../hooks/auth'
 
 function Aside() {
+  const { signOut } = useContext(AuthContext)
   return (
     <C.Container>
       <C.Header>
@@ -33,10 +35,10 @@ function Aside() {
           <MdArrowDownward />
           Saídas
         </C.MenuItemLink>
-        <C.MenuItemLink href="#">
+        <C.MenuItemButton onClick={signOut}>
           <MdExitToApp />
           Sair
-        </C.MenuItemLink>
+        </C.MenuItemButton>
       </C.MenuContainer>
     </C.Container>
   )
