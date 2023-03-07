@@ -31,13 +31,8 @@ function WalletBox({
     <C.Container color={color}>
       <span>{title}</span>
       <h1>
-        <CountUp
-          end={amount}
-          prefix={'R$ '}
-          separator="."
-          decimal=","
-          decimals={2}
-        />
+        <strong>R$ </strong>
+        <CountUp end={amount} separator="." decimal="," decimals={2} />
       </h1>
       <small>{footerLabel}</small>
       <img src={iconSelected} alt={title} />
