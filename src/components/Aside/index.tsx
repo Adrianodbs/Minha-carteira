@@ -20,7 +20,7 @@ function Aside() {
       </C.Header>
 
       <C.MenuContainer>
-        <C.MenuItemLink href="/dashboard">
+        <C.MenuItemLink href="/">
           <MdDashboard />
           Dashboard
         </C.MenuItemLink>
