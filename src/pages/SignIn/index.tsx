@@ -37,6 +37,10 @@ function SignIn() {
 
         <Button type="submit">Acessar</Button>
       </C.Form>
+      <p style={{ color: '#fff', marginTop: '20px' }}>
+        Use o login "teste01@gmail.com" e a senha "123456" para conseguir
+        acessar
+      </p>
     </C.Container>
   )
 }

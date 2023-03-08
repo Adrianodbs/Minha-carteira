@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }: any) => {
   })
 
   const signIn = (email: string, password: string) => {
-    if (email === 'adrianoalves019@gmail.com' && password === '123456') {
+    if (email === 'teste01@gmail.com' && password === '123456') {
       localStorage.setItem('@minha-carteira:logged', 'true')
       setLogged(true)
     } else {
